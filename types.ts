@@ -24,12 +24,13 @@ export interface User {
   id: string;
   name: string;
   email: string;
-  password?: string; // Only for the mock DB
+  title?: string;
+  password?: string;
 }
 
 export interface UserProgress {
   completedLessonIds: string[];
-  quizScores: Record<string, number>; // lessonId -> best score
+  quizScores: Record<string, number>;
 }
 
 export interface ChatMessage {

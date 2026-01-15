@@ -1,5 +1,12 @@
 import { Module } from './types';
 
+export const MANAGERIAL_ROLES = [
+  'Financial Wealth Manager',
+  'Financial Wealth Branch Manager',
+  'Financial Wealth Director',
+  'Agency Partner'
+];
+
 export const CURRICULUM: Module[] = [
   {
     id: 'module-1',
