@@ -60,6 +60,13 @@ export const CURRICULUM: Module[] = [
         title: 'Lesson 2: Prospecting & Setting Appointments',
         videoId: 'YeEbxO1dTlU',
         summary: 'A guide on the initial stages of the sales cycle. It covers strategies for finding potential clients (prospecting) and scripts or techniques for successfully booking that first meeting.',
+        resources: [
+          {
+            title: 'The Golden List (Prospecting Tool)',
+            url: 'https://storage.googleapis.com/msgsndr/ABdnWpTWYZ2zXM9ooQVJ/media/6968d0067a8acb9acae48aef.pdf',
+            type: 'pdf'
+          }
+        ],
         quiz: [
           {
             id: 'q1',

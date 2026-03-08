@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
-import { Menu, X, ChevronRight, LayoutDashboard, CheckCircle2, ArrowRight, Trophy, Star, AlertCircle } from 'lucide-react';
+import { Menu, X, ChevronRight, LayoutDashboard, CheckCircle2, ArrowRight, Trophy, Star, AlertCircle, FileText, Download } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import VideoPlayer from './components/VideoPlayer';
 import Quiz from './components/Quiz';
@@ -246,8 +246,8 @@ const App: React.FC = () => {
 
   if (isInitializing) {
     return (
-      <div className="min-h-screen bg-corporate-900 flex flex-col items-center justify-center p-4 text-center">
-        <div className="w-12 h-12 border-4 border-corporate-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+      <div className="min-h-screen bg-fwd-orange flex flex-col items-center justify-center p-4 text-center">
+        <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin mb-4"></div>
         <p className="text-white font-medium animate-pulse">Initializing Academy...</p>
       </div>
     );
@@ -258,11 +258,11 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50 font-sans text-gray-900">
+    <div className="flex h-screen overflow-hidden bg-fwd-grey font-sans text-fwd-green">
       
       {isSidebarOpen && (
         <div 
-          className="fixed inset-0 bg-corporate-900/50 z-30 md:hidden backdrop-blur-sm"
+          className="fixed inset-0 bg-fwd-green/50 z-30 md:hidden backdrop-blur-sm"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
@@ -285,15 +285,15 @@ const App: React.FC = () => {
       />
 
       <div className="flex-1 flex flex-col min-w-0 h-full relative">
-        <div className="md:hidden flex items-center justify-between p-4 bg-white border-b border-gray-200 shadow-sm z-20">
+        <div className="md:hidden flex items-center justify-between p-4 bg-white border-b border-fwd-grey shadow-sm z-20">
             <div className="flex items-center gap-3">
                 <button 
                     onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                    className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+                    className="p-2 text-fwd-green hover:bg-fwd-grey rounded-lg transition-colors"
                 >
                     {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
-                <span className="font-bold text-corporate-900">D11 Academy</span>
+                <span className="font-bold text-fwd-green">D11 Academy</span>
             </div>
         </div>
 
@@ -307,18 +307,18 @@ const App: React.FC = () => {
                   <>
                     {/* Course Completion Banner */}
                     {isCourseComplete && (
-                      <div className="relative overflow-hidden bg-gradient-to-r from-corporate-500 to-corporate-600 rounded-2xl p-6 text-white shadow-xl mb-8 animate-in fade-in slide-in-from-top duration-700">
+                      <div className="relative overflow-hidden bg-fwd-orange rounded-3xl p-6 text-white shadow-soft mb-8 animate-in fade-in slide-in-from-top duration-700">
                         <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
                           <div className="bg-white/20 p-4 rounded-full">
                             <Trophy className="w-12 h-12 text-white" />
                           </div>
                           <div className="text-center md:text-left">
-                            <h2 className="text-2xl font-bold mb-1">Curriculum Mastery Achieved!</h2>
+                            <h2 className="text-2xl font-bold mb-1">Curriculum mastery achieved!</h2>
                             <p className="opacity-90">Congratulations, {user.name}. You have successfully completed all D11 Financial Academy training modules.</p>
                           </div>
                           <div className="md:ml-auto">
-                            <button className="bg-white text-corporate-600 px-6 py-2.5 rounded-lg font-bold hover:bg-corporate-50 transition-colors shadow-sm">
-                              View Certification
+                            <button className="bg-white text-fwd-orange px-6 py-2.5 rounded-xl font-bold hover:bg-fwd-orange-20 transition-colors shadow-sm">
+                              View certification
                             </button>
                           </div>
                         </div>
@@ -326,13 +326,13 @@ const App: React.FC = () => {
                       </div>
                     )}
 
-                    <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-                        <div className="flex items-center gap-1 hover:text-corporate-500 cursor-pointer" onClick={() => setActiveLesson(INITIAL_LESSON)}>
+                    <div className="flex items-center gap-2 text-sm text-fwd-green/60 mb-4">
+                        <div className="flex items-center gap-1 hover:text-fwd-orange cursor-pointer" onClick={() => setActiveLesson(INITIAL_LESSON)}>
                             <LayoutDashboard className="w-4 h-4" />
                             <span>Curriculum</span>
                         </div>
                         <ChevronRight className="w-4 h-4" />
-                        <span className="text-corporate-800 font-medium">{activeModule?.title}</span>
+                        <span className="text-fwd-green font-medium">{activeModule?.title}</span>
                     </div>
 
                     <div className="max-w-4xl mx-auto space-y-8">
@@ -340,25 +340,54 @@ const App: React.FC = () => {
                             <VideoPlayer videoId={activeLesson.videoId} title={activeLesson.title} />
                         </section>
 
-                        <section className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8">
-                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                        <section className="bg-white rounded-3xl shadow-soft border border-fwd-grey/50 p-8 md:p-10">
+                            <h2 className="text-3xl font-bold text-fwd-green mb-6 tracking-tight">
                                 {activeLesson.title}
                             </h2>
                             
-                            <div className="prose prose-blue max-w-none mb-8">
-                                <h3 className="text-xs font-bold text-corporate-500 uppercase tracking-widest mb-2 flex items-center gap-2">
-                                  <div className="w-1.5 h-1.5 rounded-full bg-corporate-500" />
-                                  Lesson Summary
+                            <div className="prose prose-orange max-w-none mb-8 text-fwd-green">
+                                <h3 className="text-xs font-bold text-fwd-orange uppercase tracking-widest mb-3 flex items-center gap-2">
+                                  <div className="w-1.5 h-1.5 rounded-full bg-fwd-orange" />
+                                  Lesson summary
                                 </h3>
-                                <p className="text-gray-600 leading-relaxed text-lg">
+                                <p className="leading-relaxed text-lg">
                                     {activeLesson.summary}
                                 </p>
                             </div>
+
+                            {activeLesson.resources && activeLesson.resources.length > 0 && (
+                                <div className="mb-8 animate-in fade-in slide-in-from-bottom-2">
+                                    <h3 className="text-xs font-bold text-fwd-orange uppercase tracking-widest mb-3 flex items-center gap-2">
+                                        <div className="w-1.5 h-1.5 rounded-full bg-fwd-orange" />
+                                        Supplementary resources
+                                    </h3>
+                                    <div className="grid gap-3 sm:grid-cols-2">
+                                        {activeLesson.resources.map((resource, idx) => (
+                                            <a 
+                                                key={idx}
+                                                href={resource.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center gap-3 p-4 rounded-xl border border-fwd-grey bg-white hover:border-fwd-orange hover:shadow-md transition-all group"
+                                            >
+                                                <div className="w-10 h-10 rounded-lg bg-fwd-orange-20 flex items-center justify-center text-fwd-orange shrink-0 group-hover:scale-110 transition-transform">
+                                                    <FileText className="w-5 h-5" />
+                                                </div>
+                                                <div className="flex-1 min-w-0">
+                                                    <p className="font-bold text-fwd-green text-sm truncate">{resource.title}</p>
+                                                    <p className="text-xs text-fwd-green/50">PDF Document</p>
+                                                </div>
+                                                <Download className="w-4 h-4 text-fwd-green/40 group-hover:text-fwd-orange transition-colors" />
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                             
-                            <div className="flex flex-col gap-4 pt-6 border-t border-gray-100">
+                            <div className="flex flex-col gap-4 pt-8 border-t border-fwd-grey">
                                 {completionError && (
-                                  <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg flex items-center gap-2 text-sm text-amber-800 animate-pulse">
-                                    <AlertCircle className="w-4 h-4" />
+                                  <div className="p-4 bg-fwd-orange-20 border border-fwd-orange-50 rounded-xl flex items-center gap-3 text-sm text-fwd-green animate-pulse">
+                                    <AlertCircle className="w-5 h-5 text-fwd-orange" />
                                     {completionError}
                                   </div>
                                 )}
@@ -367,16 +396,16 @@ const App: React.FC = () => {
                                   <button 
                                     onClick={toggleCompletion}
                                     className={`
-                                      flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg border font-bold text-sm transition-all duration-200
+                                      flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl border-2 font-bold text-sm transition-all duration-200
                                       ${completedLessons.has(activeLesson.id)
-                                        ? 'bg-green-50 border-green-200 text-green-700 hover:bg-green-100'
-                                        : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400'}
+                                        ? 'bg-fwd-green-20 border-fwd-green-20 text-fwd-green'
+                                        : 'bg-white border-fwd-grey text-fwd-green hover:border-fwd-green'}
                                     `}
                                   >
                                     {completedLessons.has(activeLesson.id) ? (
                                       <><CheckCircle2 className="w-5 h-5" /><span>Completed</span></>
                                     ) : (
-                                      <><div className="w-5 h-5 rounded-full border-2 border-gray-300" /><span>Mark as Complete</span></>
+                                      <><div className="w-5 h-5 rounded-full border-2 border-fwd-grey" /><span>Mark as complete</span></>
                                     )}
                                   </button>
 
@@ -384,13 +413,13 @@ const App: React.FC = () => {
                                     onClick={goToNextLesson}
                                     disabled={isNextLocked()}
                                     className={`
-                                      w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-2.5 rounded-lg font-bold text-white transition-all shadow-md
+                                      w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-xl font-bold text-white transition-all shadow-md
                                       ${isNextLocked()
-                                        ? 'bg-gray-300 cursor-not-allowed' 
-                                        : 'bg-corporate-900 hover:bg-corporate-800 active:scale-[0.98]'}
+                                        ? 'bg-fwd-grey cursor-not-allowed text-fwd-green/50' 
+                                        : 'bg-fwd-orange hover:bg-fwd-orange-80 active:scale-[0.98]'}
                                     `}
                                   >
-                                    <span>Next Lesson</span>
+                                    <span>Next lesson</span>
                                     {isNextLocked() ? <span>🔒</span> : <ArrowRight className="w-5 h-5" />}
                                   </button>
                                 </div>

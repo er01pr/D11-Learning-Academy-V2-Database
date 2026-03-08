@@ -5,6 +5,12 @@ export interface Question {
   correctAnswerIndex: number;
 }
 
+export interface Resource {
+  title: string;
+  url: string;
+  type: 'pdf' | 'link';
+}
+
 export interface Lesson {
   id: string;
   title: string;
@@ -12,6 +18,7 @@ export interface Lesson {
   summary: string;
   moduleId: string;
   quiz?: Question[];
+  resources?: Resource[];
 }
 
 export interface Module {

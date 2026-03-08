@@ -9,19 +9,24 @@
       tailwind.config = {
         theme: {
           extend: {
+            fontFamily: {
+              sans: ['Arial', 'Helvetica', 'sans-serif'], // FWD Policy: Fallback to Arial
+            },
             colors: {
-              corporate: {
-                50: '#FFFAF5',  // Very light orange/white
-                100: '#FFE4D1', // Light peach/orange (Accents)
-                200: '#FDBA74', // Soft Orange
-                300: '#FB923C', // Medium Orange
-                400: '#F37021', // FWD Secondary Orange
-                500: '#E87722', // FWD Primary Brand Orange
-                600: '#D66616', // Darker Orange (Hover)
-                700: '#9A3412', // Deep Orange (Borders/Text)
-                800: '#262626', // FWD Dark Grey (Secondary Backgrounds/Text)
-                900: '#121212', // FWD Black (Primary Dark Backgrounds)
+              fwd: {
+                orange: '#e87722',      // Primary Brand Color
+                'orange-80': '#d66616', // Hover state (derived)
+                'orange-50': '#f3bb90', // 50% Tint
+                'orange-20': '#fae4d3', // 20% Tint
+                green: '#183028',       // Dark Green (Text/Contrast)
+                'green-50': '#859d99',  // 50% Tint
+                'green-20': '#ced8d6',  // 20% Tint
+                grey: '#dbdfe1',        // Backgrounds only
+                white: '#ffffff'
               }
+            },
+            boxShadow: {
+              'soft': '0 4px 20px -2px rgba(24, 48, 40, 0.08)',
             }
           }
         }
@@ -40,7 +45,7 @@
 }
 </script>
 </head>
-  <body class="bg-gray-50 text-gray-900 antialiased">
+  <body class="bg-fwd-grey text-fwd-green antialiased selection:bg-fwd-orange selection:text-white">
     <div id="root"></div>
   </body>
 </html>
