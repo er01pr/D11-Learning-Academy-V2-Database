@@ -1,7 +1,8 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Module, Lesson, User } from '../types';
-import { PlayCircle, CheckCircle2, BookOpen, Search, LogOut, User as UserIcon, ChevronDown, ChevronRight, Lock, Link, Check, Users, GraduationCap } from 'lucide-react';
+import { PlayCircle, CheckCircle2, BookOpen, Search, LogOut, User as UserIcon, ChevronDown, ChevronRight, Lock, Link, Check, Users, GraduationCap, StickyNote } from 'lucide-react';
 import { MANAGERIAL_ROLES } from '../constants';
+import { AchievementBadges } from './Achievements';
 
 interface SidebarProps {
   modules: Module[];
@@ -15,6 +16,8 @@ interface SidebarProps {
   onLogout: () => void;
   currentView: 'learning' | 'dashboard';
   onChangeView: (view: 'learning' | 'dashboard') => void;
+  quizScores?: Record<string, number>;
+  totalLessons?: number;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ 
@@ -28,7 +31,9 @@ const Sidebar: React.FC<SidebarProps> = ({
   user,
   onLogout,
   currentView,
-  onChangeView
+  onChangeView,
+  quizScores = {},
+  totalLessons = 0
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedModuleId, setExpandedModuleId] = useState<string | null>(null);
@@ -42,13 +47,11 @@ const Sidebar: React.FC<SidebarProps> = ({
     }
   }, [activeLessonId, modules]);
 
-  const totalLessons = useMemo(() => 
-    modules.reduce((acc, m) => acc + m.lessons.length, 0), 
-  [modules]);
-  
-  const completionPercentage = useMemo(() => 
-    totalLessons > 0 ? Math.round((completedLessonIds.size / totalLessons) * 100) : 0,
-  [completedLessonIds, totalLessons]);
+  const lessonCount = totalLessons || modules.reduce((acc, m) => acc + m.lessons.length, 0);
+
+  const completionPercentage = useMemo(() =>
+    lessonCount > 0 ? Math.round((completedLessonIds.size / lessonCount) * 100) : 0,
+  [completedLessonIds, lessonCount]);
 
   const filteredModules = useMemo(() => {
     if (!searchQuery.trim()) return modules;
@@ -260,6 +263,9 @@ const Sidebar: React.FC<SidebarProps> = ({
                                 )}
                               </div>
                               <span className="line-clamp-2 leading-snug">{lesson.title}</span>
+                              {user && localStorage.getItem(`notes_${user.id}_${lesson.id}`) && (
+                                <StickyNote className="w-3 h-3 text-fwd-orange/50 shrink-0 ml-auto" />
+                              )}
                             </button>
                           );
                         })}

@@ -3,6 +3,7 @@ import { User, UserProgress } from '../types';
 import { db } from '../services/database';
 import { CURRICULUM } from '../constants';
 import { Users, Mail, TrendingUp, Award, Search, RefreshCw, AlertCircle, GitMerge, User as UserIcon } from 'lucide-react';
+import CoachingInsights from './CoachingInsights';
 
 interface Downline extends User {
   progress: UserProgress;
@@ -88,6 +89,13 @@ const ManagerDashboard: React.FC<ManagerDashboardProps> = ({ user }) => {
           Refresh data
         </button>
       </div>
+
+      {/* AI Coaching Insights */}
+      <CoachingInsights
+        downlines={downlines.map(d => ({ name: d.name, progress: d.progress }))}
+        totalLessons={totalLessonsCount}
+        modules={CURRICULUM}
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="bg-white p-6 rounded-3xl shadow-soft border border-fwd-grey flex items-center gap-4">
