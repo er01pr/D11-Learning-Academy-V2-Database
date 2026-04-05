@@ -1,7 +1,7 @@
 import { Module } from './types';
 
-export const CANVA_EMBED_URL = 'https://www.canva.com/design/DAHF9y5TDzE/view?embed';
-export const CANVA_VIEW_URL = 'https://canva.link/d11trainingmodule';
+export const CANVA_EMBED_URL = 'https://www.canva.com/design/DAHF9y5TDzE/2amwGWvHOShzN3D3NWSxFw/view?embed';
+export const CANVA_VIEW_URL = 'https://www.canva.com/design/DAHF9y5TDzE/2amwGWvHOShzN3D3NWSxFw/view';
 
 export const MANAGERIAL_ROLES = [
   'Financial Wealth Manager',
