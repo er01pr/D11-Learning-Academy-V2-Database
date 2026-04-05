@@ -12,7 +12,7 @@ const TrainingDecks: React.FC = () => {
         Training Decks
       </h2>
       <p className="text-sm text-fwd-green/60 mb-6">
-        Browse the D11 training module presentation — covers all modules and key concepts.
+        Browse the Aquila11 training module presentation — covers all modules and key concepts.
       </p>
 
       <div className="bg-white rounded-3xl shadow-soft border border-fwd-grey/50 overflow-hidden">
@@ -22,7 +22,7 @@ const TrainingDecks: React.FC = () => {
             className="w-full h-full"
             allowFullScreen
             loading="lazy"
-            title="D11 Training Module Deck"
+            title="Aquila11 Training Module Deck"
           />
         </div>
       </div>

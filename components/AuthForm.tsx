@@ -165,9 +165,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ onAuthSuccess }) => {
                     <GraduationCap className="w-10 h-10" />
                  </div>
               </div>
-              <h2 className="text-2xl font-bold text-fwd-green mb-1">D11 Financial Academy</h2>
+              <h2 className="text-2xl font-bold text-fwd-green mb-1">Aquila11 Financial Academy</h2>
               <p className="text-fwd-green/60 text-sm">
-                {isLogin ? 'Log in to continue your training' : 'Join the D11 Financial Academy'}
+                {isLogin ? 'Log in to continue your training' : 'Join the Aquila11 Financial Academy'}
               </p>
             </div>
 

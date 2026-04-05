@@ -102,7 +102,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 <GraduationCap className="w-6 h-6" />
             </div>
             <div>
-                <h1 className="text-lg font-bold text-fwd-green leading-tight">D11 Financial<br/>Academy</h1>
+                <h1 className="text-lg font-bold text-fwd-green leading-tight">Aquila11 Financial<br/>Academy</h1>
             </div>
         </div>
 
@@ -238,7 +238,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               <div className="mb-4 bg-fwd-orange-20 p-6 rounded-3xl">
                 <Presentation className="w-8 h-8 text-fwd-orange mx-auto mb-3" />
                 <p className="font-bold text-fwd-green mb-1">Training Decks</p>
-                <p className="text-xs">Browse the D11 training module presentation covering all key concepts.</p>
+                <p className="text-xs">Browse the Aquila11 training module presentation covering all key concepts.</p>
               </div>
            </div>
         ) : (
@@ -313,7 +313,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       </div>
       
       <div className="p-4 border-t border-fwd-grey bg-white text-center shrink-0">
-          <p className="text-[10px] text-fwd-green/50 font-bold uppercase tracking-widest">&copy; 2024 D11 Financial Group</p>
+          <p className="text-[10px] text-fwd-green/50 font-bold uppercase tracking-widest">&copy; 2024 Aquila11 Financial Group</p>
       </div>
     </aside>
   );

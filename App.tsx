@@ -333,7 +333,7 @@ const App: React.FC = () => {
                 >
                     {isSidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
-                <span className="font-bold text-fwd-green">D11 Academy</span>
+                <span className="font-bold text-fwd-green">Aquila11 Academy</span>
             </div>
         </div>
 
@@ -362,7 +362,7 @@ const App: React.FC = () => {
                           </div>
                           <div className="text-center md:text-left">
                             <h2 className="text-2xl font-bold mb-1">Curriculum mastery achieved!</h2>
-                            <p className="opacity-90">Congratulations, {user.name}. You have successfully completed all D11 Financial Academy training modules.</p>
+                            <p className="opacity-90">Congratulations, {user.name}. You have successfully completed all Aquila11 Financial Academy training modules.</p>
                           </div>
                           <div className="md:ml-auto">
                             <button

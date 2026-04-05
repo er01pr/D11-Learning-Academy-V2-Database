@@ -11,7 +11,7 @@ export const initializeChat = (lessonTitle: string, lessonSummary: string) => {
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
   const systemInstruction = `
-    You are the "D11 Financial Academy AI Tutor". 
+    You are the "Aquila11 Financial Academy AI Tutor".
     Your goal is to help financial advisors understand the training material.
     
     Current Lesson Context:

@@ -13,7 +13,7 @@ interface CertificateProps {
 export default function Certificate({ userName, completionDate, avgQuizScore, onClose }: CertificateProps) {
   const certificateRef = useRef<HTMLDivElement>(null);
   const certIdRef = useRef<string>(
-    'D11-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase()
+    'A11-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase()
   );
   const certId = certIdRef.current;
 
@@ -49,7 +49,7 @@ export default function Certificate({ userName, completionDate, avgQuizScore, on
 
       ctx.fillStyle = '#183028';
       ctx.font = 'bold 28px Georgia, serif';
-      ctx.fillText('D11 Financial Academy', 400, 120);
+      ctx.fillText('Aquila11 Financial Academy', 400, 120);
 
       // Divider
       ctx.fillStyle = '#e87722';
@@ -71,7 +71,7 @@ export default function Certificate({ userName, completionDate, avgQuizScore, on
       ctx.globalAlpha = 0.6;
       ctx.font = '14px Arial';
       ctx.fillText('has successfully completed all training modules of the', 400, 260);
-      ctx.fillText('D11 Financial Academy curriculum', 400, 280);
+      ctx.fillText('Aquila11 Financial Academy curriculum', 400, 280);
       ctx.globalAlpha = 1;
 
       // Stats labels
@@ -100,7 +100,7 @@ export default function Certificate({ userName, completionDate, avgQuizScore, on
 
       // Download
       const link = document.createElement('a');
-      link.download = `D11-Certificate-${userName.replace(/\s+/g, '-')}.png`;
+      link.download = `Aquila11-Certificate-${userName.replace(/\s+/g, '-')}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     } catch (err) {
@@ -131,7 +131,7 @@ export default function Certificate({ userName, completionDate, avgQuizScore, on
           <p className="text-xs font-bold text-fwd-orange uppercase tracking-[0.2em] mb-2">
             Certificate of Completion
           </p>
-          <h2 className="text-3xl font-bold text-fwd-green mb-1">D11 Financial Academy</h2>
+          <h2 className="text-3xl font-bold text-fwd-green mb-1">Aquila11 Financial Academy</h2>
           <div className="w-24 h-0.5 bg-fwd-orange mx-auto my-6" />
 
           <p className="text-sm text-fwd-green/60 mb-2">This certifies that</p>
@@ -139,7 +139,7 @@ export default function Certificate({ userName, completionDate, avgQuizScore, on
           <p className="text-sm text-fwd-green/60 mb-6">
             has successfully completed all training modules of the
             <br />
-            D11 Financial Academy curriculum
+            Aquila11 Financial Academy curriculum
           </p>
 
           <div className="flex justify-center gap-8 mb-8">

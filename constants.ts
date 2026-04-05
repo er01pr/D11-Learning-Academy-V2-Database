@@ -23,7 +23,7 @@ export const CURRICULUM: Module[] = [
         summary: 'A quick (6-minute) primer on the basics of life insurance. It defines key terms (premium, beneficiary, policy owner, sum assured) and explains the fundamental purpose of getting insured.',
         resources: [
           {
-            title: 'D11 Training Module Deck',
+            title: 'Aquila11 Training Module Deck',
             url: 'https://canva.link/d11trainingmodule',
             type: 'canva'
           }
@@ -211,7 +211,7 @@ export const CURRICULUM: Module[] = [
         summary: 'Focused training on the "Set For Health" product. This is likely a critical illness or medical insurance plan, highlighting the specific diseases covered and the claim benefits.',
         resources: [
           {
-            title: 'D11 Training Module Deck',
+            title: 'Aquila11 Training Module Deck',
             url: 'https://canva.link/d11trainingmodule',
             type: 'canva'
           }
@@ -434,7 +434,7 @@ export const CURRICULUM: Module[] = [
         summary: 'An introduction to Riders (add-ons). It explains what riders are and covers the most common ones available to enhance a client\'s coverage.',
         resources: [
           {
-            title: 'D11 Training Module Deck',
+            title: 'Aquila11 Training Module Deck',
             url: 'https://canva.link/d11trainingmodule',
             type: 'canva'
           }
@@ -531,7 +531,7 @@ export const CURRICULUM: Module[] = [
         summary: 'A sales skill training video focusing on soft skills. It teaches agents how to professionally respond to common client hesitations (e.g., "I have no money," "I need to ask my spouse").',
         resources: [
           {
-            title: 'D11 Training Module Deck',
+            title: 'Aquila11 Training Module Deck',
             url: 'https://canva.link/d11trainingmodule',
             type: 'canva'
           }
