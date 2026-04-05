@@ -667,6 +667,48 @@ export const CURRICULUM: Module[] = [
           }
         ]
       },
+      {
+        id: 'm4-l5',
+        moduleId: 'module-4',
+        title: 'CUBE Mobile App Training',
+        videoId: 'ZlwbHYPgJ7A',
+        summary: 'A hands-on tutorial on the CUBE mobile app — the digital tool agents use daily to manage their business on the go. This lesson covers how to create proposals, check on existing leads, add new leads, and edit lead information directly from your phone.',
+        quiz: [
+          {
+            id: 'q1',
+            text: 'What can agents do using the CUBE mobile app?',
+            options: [
+              'Only view company announcements',
+              'Create proposals, add leads, and manage lead information',
+              'File insurance claims for clients',
+              'Access training videos only'
+            ],
+            correctAnswerIndex: 1
+          },
+          {
+            id: 'q2',
+            text: 'Why is the CUBE app important for agents in the field?',
+            options: [
+              'It replaces the need for any client meetings',
+              'It allows agents to manage leads and create proposals on the go',
+              'It automatically closes sales without agent involvement',
+              'It is only used for internal communication'
+            ],
+            correctAnswerIndex: 1
+          },
+          {
+            id: 'q3',
+            text: 'Which of the following is NOT a feature covered in this CUBE training?',
+            options: [
+              'Creating proposals',
+              'Adding new leads',
+              'Editing existing lead details',
+              'Processing claim payouts'
+            ],
+            correctAnswerIndex: 3
+          }
+        ]
+      },
     ],
   },
 ];
