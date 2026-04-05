@@ -702,7 +702,7 @@ export const CURRICULUM: Module[] = [
         id: 'm4-l5',
         moduleId: 'module-4',
         title: 'CUBE Mobile App Training',
-        videoId: 'ZlwbHYPgJ7A',
+        videoId: 'PjOSL3MbIl4',
         summary: 'A hands-on tutorial on the CUBE mobile app — the digital tool agents use daily to manage their business on the go. This lesson covers how to create proposals, check on existing leads, add new leads, and edit lead information directly from your phone.',
         quiz: [
           {
