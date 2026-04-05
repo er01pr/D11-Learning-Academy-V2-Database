@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
-import { Menu, X, ChevronRight, LayoutDashboard, CheckCircle2, ArrowRight, Trophy, Star, AlertCircle, FileText, Download, Sparkles, MessageCircle } from 'lucide-react';
+import { Menu, X, ChevronRight, LayoutDashboard, CheckCircle2, ArrowRight, Trophy, Star, AlertCircle, FileText, Download, Sparkles, MessageCircle, Presentation, ExternalLink } from 'lucide-react';
 import Sidebar from './components/Sidebar';
 import VideoPlayer from './components/VideoPlayer';
 import Quiz from './components/Quiz';
@@ -12,6 +12,7 @@ import LessonNotes from './components/LessonNotes';
 import { AchievementBadges } from './components/Achievements';
 import StudyRecommendation from './components/StudyRecommendation';
 import Certificate from './components/Certificate';
+import TrainingDecks from './components/TrainingDecks';
 import { CURRICULUM, INITIAL_LESSON } from './constants';
 import { Lesson, User } from './types';
 import { db } from './services/database';
@@ -25,7 +26,7 @@ const App: React.FC = () => {
   // Navigation State
   const [activeLesson, setActiveLesson] = useState<Lesson>(INITIAL_LESSON);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [currentView, setCurrentView] = useState<'learning' | 'dashboard'>('learning');
+  const [currentView, setCurrentView] = useState<'learning' | 'dashboard' | 'training-decks'>('learning');
 
   // Progress State
   const [completedLessons, setCompletedLessons] = useState<Set<string>>(new Set());
@@ -339,7 +340,11 @@ const App: React.FC = () => {
         <main ref={mainContentRef} className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth">
             <div className="max-w-6xl mx-auto space-y-8 pb-20">
 
-                {currentView === 'dashboard' ? (
+                {currentView === 'training-decks' ? (
+                  <ErrorBoundary fallbackTitle="Training decks error">
+                    <TrainingDecks />
+                  </ErrorBoundary>
+                ) : currentView === 'dashboard' ? (
                   <ErrorBoundary fallbackTitle="Dashboard error">
                     <ManagerDashboard user={user} />
                   </ErrorBoundary>
@@ -426,13 +431,19 @@ const App: React.FC = () => {
                                                 className="flex items-center gap-3 p-4 rounded-xl border border-fwd-grey bg-white hover:border-fwd-orange hover:shadow-md transition-all group"
                                             >
                                                 <div className="w-10 h-10 rounded-lg bg-fwd-orange-20 flex items-center justify-center text-fwd-orange shrink-0 group-hover:scale-110 transition-transform">
-                                                    <FileText className="w-5 h-5" />
+                                                    {resource.type === 'canva' ? <Presentation className="w-5 h-5" /> : <FileText className="w-5 h-5" />}
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <p className="font-bold text-fwd-green text-sm truncate">{resource.title}</p>
-                                                    <p className="text-xs text-fwd-green/50">PDF Document</p>
+                                                    <p className="text-xs text-fwd-green/50">
+                                                      {resource.type === 'canva' ? 'Training Deck' : resource.type === 'pdf' ? 'PDF Document' : 'External Link'}
+                                                    </p>
                                                 </div>
-                                                <Download className="w-4 h-4 text-fwd-green/40 group-hover:text-fwd-orange transition-colors" />
+                                                {resource.type === 'canva' || resource.type === 'link' ? (
+                                                  <ExternalLink className="w-4 h-4 text-fwd-green/40 group-hover:text-fwd-orange transition-colors" />
+                                                ) : (
+                                                  <Download className="w-4 h-4 text-fwd-green/40 group-hover:text-fwd-orange transition-colors" />
+                                                )}
                                             </a>
                                         ))}
                                     </div>

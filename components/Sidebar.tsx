@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Module, Lesson, User } from '../types';
-import { PlayCircle, CheckCircle2, BookOpen, Search, LogOut, User as UserIcon, ChevronDown, ChevronRight, Lock, Link, Check, Users, GraduationCap, StickyNote } from 'lucide-react';
+import { PlayCircle, CheckCircle2, BookOpen, Search, LogOut, User as UserIcon, ChevronDown, ChevronRight, Lock, Link, Check, Users, GraduationCap, StickyNote, Presentation } from 'lucide-react';
 import { MANAGERIAL_ROLES } from '../constants';
 import { AchievementBadges } from './Achievements';
 
@@ -14,8 +14,8 @@ interface SidebarProps {
   onCloseMobile: () => void;
   user: User | null;
   onLogout: () => void;
-  currentView: 'learning' | 'dashboard';
-  onChangeView: (view: 'learning' | 'dashboard') => void;
+  currentView: 'learning' | 'dashboard' | 'training-decks';
+  onChangeView: (view: 'learning' | 'dashboard' | 'training-decks') => void;
   quizScores?: Record<string, number>;
   totalLessons?: number;
 }
@@ -106,28 +106,49 @@ const Sidebar: React.FC<SidebarProps> = ({
             </div>
         </div>
 
-        {/* View Switcher for Managers */}
-        {isManager && (
-          <div className="grid grid-cols-2 gap-2 mb-6 p-1.5 bg-fwd-grey rounded-lg">
-             <button 
+        {/* View Switcher */}
+        {isManager ? (
+          <div className="grid grid-cols-3 gap-1.5 mb-6 p-1.5 bg-fwd-grey rounded-lg">
+             <button
                 onClick={() => onChangeView('learning')}
-                className={`flex items-center justify-center gap-2 py-2 text-xs font-bold rounded-md transition-all ${
+                className={`flex items-center justify-center gap-1.5 py-2 text-xs font-bold rounded-md transition-all ${
                    currentView === 'learning' ? 'bg-fwd-orange text-white shadow-sm' : 'text-fwd-green hover:bg-white/50'
                 }`}
              >
                 <BookOpen className="w-3.5 h-3.5" />
-                Learning
+                Learn
              </button>
-             <button 
+             <button
                 onClick={() => onChangeView('dashboard')}
-                className={`flex items-center justify-center gap-2 py-2 text-xs font-bold rounded-md transition-all ${
+                className={`flex items-center justify-center gap-1.5 py-2 text-xs font-bold rounded-md transition-all ${
                    currentView === 'dashboard' ? 'bg-fwd-orange text-white shadow-sm' : 'text-fwd-green hover:bg-white/50'
                 }`}
              >
                 <Users className="w-3.5 h-3.5" />
                 Team
              </button>
+             <button
+                onClick={() => onChangeView('training-decks')}
+                className={`flex items-center justify-center gap-1.5 py-2 text-xs font-bold rounded-md transition-all ${
+                   currentView === 'training-decks' ? 'bg-fwd-orange text-white shadow-sm' : 'text-fwd-green hover:bg-white/50'
+                }`}
+             >
+                <Presentation className="w-3.5 h-3.5" />
+                Decks
+             </button>
           </div>
+        ) : (
+          <button
+            onClick={() => onChangeView(currentView === 'training-decks' ? 'learning' : 'training-decks')}
+            className={`w-full flex items-center justify-center gap-2 mb-6 py-2.5 text-xs font-bold rounded-lg border transition-all ${
+              currentView === 'training-decks'
+                ? 'bg-fwd-orange text-white border-fwd-orange shadow-sm'
+                : 'bg-white border-fwd-orange text-fwd-orange hover:bg-fwd-orange hover:text-white'
+            }`}
+          >
+            <Presentation className="w-3.5 h-3.5" />
+            Training Decks
+          </button>
         )}
 
         {currentView === 'learning' && (
@@ -210,6 +231,14 @@ const Sidebar: React.FC<SidebarProps> = ({
                 <Users className="w-8 h-8 text-fwd-orange mx-auto mb-3" />
                 <p className="font-bold text-fwd-green mb-1">Team overview</p>
                 <p className="text-xs">Monitor advisor performance and progress through the curriculum.</p>
+              </div>
+           </div>
+        ) : currentView === 'training-decks' ? (
+           <div className="px-6 text-center text-fwd-green/60 text-sm animate-in slide-in-from-right-4">
+              <div className="mb-4 bg-fwd-orange-20 p-6 rounded-3xl">
+                <Presentation className="w-8 h-8 text-fwd-orange mx-auto mb-3" />
+                <p className="font-bold text-fwd-green mb-1">Training Decks</p>
+                <p className="text-xs">Browse the D11 training module presentation covering all key concepts.</p>
               </div>
            </div>
         ) : (

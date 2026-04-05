@@ -8,7 +8,7 @@ export interface Question {
 export interface Resource {
   title: string;
   url: string;
-  type: 'pdf' | 'link';
+  type: 'pdf' | 'link' | 'canva';
 }
 
 export interface Lesson {
